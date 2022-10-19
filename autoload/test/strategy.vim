@@ -110,6 +110,8 @@ function! test#strategy#vtr(cmd) abort
 endfunction
 
 function! test#strategy#vimux(cmd) abort
+  call VimuxSendKeys("-X cancel") " Ensures not in copy-mode
+
   if exists('g:test#preserve_screen') && !g:test#preserve_screen
     call VimuxClearTerminalScreen()
     call VimuxClearRunnerHistory()
